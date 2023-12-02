@@ -1,0 +1,215 @@
+* {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --gutter: 30px;
+  --side-small: 32;
+  --size-big: 32;
+  --depth: 4000px;
+  --transition: .75s cubic-bezier(.075, .5, 0, 1)
+}
+
+/* Damit auf rechter Seite Scrollbar nicht ersichtich ist*/
+
+body {
+	scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { 
+	display: none; /* Safari and Chrome */
+}
+
+
+
+
+body {
+
+  background: #000;
+  color: #fff;
+
+/* Damit Schrift sich anpasst an Bildschirmgrösse*/
+
+  font-size:calc(var(--index) * .8);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.75;
+  height: var(--depth);
+  font-weight: 300;
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  perspective: 1500px;
+}
+
+.inhalt {
+  
+  transform-style: preserve-3d;
+  height: 100%;
+}
+
+
+
+.frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition), opacity .75s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+
+
+
+
+
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+
+
+}
+
+
+.frame h2 {
+  text-align: center;
+  font-size: calc(var(--index) * 3) ;
+  width: min-content;
+}
+
+/* Das der Text mittig nicht so fest eingegrenzt wird*/
+
+
+.text-center p {
+  max-width: 70vw;
+  margin-top: 3vh;
+}
+
+
+.frame-media-img {
+  position: relative;
+  width: calc(var(--index) * var(--side-small));
+  height: calc(var(--index) * var(--size-big)); 
+  background-position: center;
+  background-size: cover;
+}
+
+
+.frame-media-video {
+  position: relative;
+  background-position: center;
+
+}
+
+
+.frame-media_left {
+  right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+  
+
+}
+
+
+.frame-media_right {
+  left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+  
+
+}
+
+/* macht das das dritte Bild nicht von anfang ersichtlich ist*/
+
+.frame_background {
+	background-color: rgb(0 0 0 / .87);
+}
+
+
+
+
+/* alles was mit Text zu tun hat*/
+
+
+
+.text-right > * {
+  position: relative;
+  left: 18vw;
+}
+
+
+.text-left > * {
+  position: relative;
+  right: 18vw;
+}
+
+
+
+.frame h3 {
+  font-size: calc(var(--index) * 2);
+
+}
+
+
+
+.text-left, .text-right p {
+  max-width: 30vw;
+  margin-top: 3vh;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+
+  /* Ich habe versucht, den Text breiter zu machen - ohne Erfolg*/
+
+
+  .text-left > *  {
+    right: 0; /* Stelle sicher, dass der Text bei mobiler Ansicht nicht nach rechts verschoben wird */
+    max-width: 200vw; /* Passe die maximale Breite des Textes an, wenn nötig */
+}
+
+
+
+  /* Bilder mittig ausgerichtet*/
+
+  
+  .frame-media_left {
+    position: relative;
+    right: 0;
+    
+  }
+
+  .frame-media_right {
+    position: relative;
+    left: 0;
+    
+  }
+
+    /* Frame noch eine Klasse gegeben, damit Bilder nicht direkt ersichtich ist*/
+
+
+  .frame_mobile {
+    background-color: rgb(0 0 0 / .87);
+  }
+  
+}
+
+
